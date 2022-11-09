@@ -3,7 +3,7 @@ import { Statue } from "./statue";
 
 document.addEventListener('DOMContentLoaded',()=>{
     let szulo = document.getElementById('hiba') as HTMLDivElement;
-    let list : Artwork[];
+    let list : Artwork[] = [];
 
     function hiba( szoveg : string ){
         let p = document.createElement('p');
@@ -47,8 +47,28 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
 
         if(ellTitle.test(title)&&ellYear.test(year)&&ellPrice.test(price)&&ellHeight.test(height)){
-            let statue :Statue = new Statue(title,parseInt(year),parseInt(price),parseInt(height));
-            list.push(statue);
+            
+            list.push(new Statue(title,parseInt(year),parseInt(price),parseInt(height)));
+
+            let darab = document.getElementById('darab') as HTMLParagraphElement;
+
+            let ertek = document.getElementById('ertek') as HTMLParagraphElement;
+
+            let osszertek = 0;
+
+            for(let e of list){
+                osszertek += e.price;
+            }
+
+           darab.innerHTML = "A művek darabszáma : "  + list.length; 
+
+           ertek.innerHTML = "A művek összesített értéke : "  + osszertek+" Ft";
+
+           (document.getElementById('title') as HTMLInputElement).value="";
+           (document.getElementById('year') as HTMLInputElement).value="";
+           (document.getElementById('price') as HTMLInputElement).value="";
+           (document.getElementById('height') as HTMLInputElement).value="";
+
             
         }
 

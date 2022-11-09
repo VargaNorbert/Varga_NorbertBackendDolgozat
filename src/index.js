@@ -4,7 +4,7 @@ const statue_1 = require("./statue");
 document.addEventListener('DOMContentLoaded', () => {
     var _a;
     let szulo = document.getElementById('hiba');
-    let list;
+    let list = [];
     function hiba(szoveg) {
         let p = document.createElement('p');
         p.innerHTML = szoveg;
@@ -36,8 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
             hiba('Hibás méret!');
         }
         if (ellTitle.test(title) && ellYear.test(year) && ellPrice.test(price) && ellHeight.test(height)) {
-            let statue = new statue_1.Statue(title, parseInt(year), parseInt(price), parseInt(height));
-            list.push(statue);
+            list.push(new statue_1.Statue(title, parseInt(year), parseInt(price), parseInt(height)));
+            let darab = document.getElementById('darab');
+            let ertek = document.getElementById('ertek');
+            let osszertek = 0;
+            for (let e of list) {
+                osszertek += e.price;
+            }
+            darab.innerHTML = "A művek darabszáma : " + list.length;
+            ertek.innerHTML = "A művek összesített értéke : " + osszertek + " Ft";
+            document.getElementById('title').value = "";
+            document.getElementById('year').value = "";
+            document.getElementById('price').value = "";
+            document.getElementById('height').value = "";
         }
     });
 });
