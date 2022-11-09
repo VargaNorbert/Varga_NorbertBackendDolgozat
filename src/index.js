@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ellHeight.test(height)) {
             hiba('Hibás méret!');
         }
-        if (ellTitle.test(title) && ellYear.test(year) && ellPrice.test(price) && ellHeight.test(height)) {
+        let hibas = document.getElementById('hiba');
+        if (!hibas.firstChild) {
             list.push(new statue_1.Statue(title, parseInt(year), parseInt(price), parseInt(height)));
             let darab = document.getElementById('darab');
             let ertek = document.getElementById('ertek');

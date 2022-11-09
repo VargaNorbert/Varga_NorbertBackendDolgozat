@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded',()=>{
             hiba('Hibás méret!')
         }
 
-        if(ellTitle.test(title)&&ellYear.test(year)&&ellPrice.test(price)&&ellHeight.test(height)){
+        let hibas = document.getElementById('hiba') as HTMLDivElement;
+
+        if(!hibas.firstChild){
             
             list.push(new Statue(title,parseInt(year),parseInt(price),parseInt(height)));
 
